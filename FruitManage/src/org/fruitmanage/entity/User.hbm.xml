@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="org.fruitmanage.entity">
+  <class name="User" table="user" >
+    <id name="id" column="id" type="java.lang.Integer">
+      <generator class="identity">
+      </generator>
+    </id>
+    <property name="userName" column="userName" type="java.lang.String"></property>
+    <property name="realName" column="realName" type="java.lang.String"></property>
+    <property name="password" column="password" type="java.lang.String"></property>
+     <property name="postcode" column="postcode" type="java.lang.String"></property>
+    <property name="phone" column="phone" type="java.lang.String"></property>
+    <property name="email" column="email" type="java.lang.String"></property>
+    <property name="gender" column="gender" type="java.lang.Integer"></property>
+    <property name="address" column="address" type="java.lang.String"></property>
+    <property name="style" column="style" type="java.lang.Integer"></property>
+    <set name="shopcars" inverse="true">
+        <key>
+            <column name="userId" />
+        </key>
+        <one-to-many class="Shopcar"/>
+    </set>
+    <set name="orders" inverse="true">
+        <key>
+            <column name="userId" />
+        </key>
+        <one-to-many class="Order"/>
+    </set>
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+ <hibernate-mapping package="org.fruitmanage.entity">
+ 	<class name="Person"  table="person">
+ 		<composite-id  name="pk" class="org.fruitmanage.entity.PersonPK" >
+ 			<key-property name="firstName"  column="firstName"  type="string"/>
+ 			<key-property name="secondName"  column="secondName"  type="string"/>
+ 		</composite-id>
+ 		<property name="age"  column="age"  type="string"  not-null="true"/>
+ 	</class>
+ </hibernate-mapping>

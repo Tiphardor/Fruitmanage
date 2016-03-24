@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+    <package name="default" extends="struts-default">
+        <action name="registerUser" class="org.fruitmanage.action.RegisterUserAction">
+	  		<result name="success">login.jsp</result>
+	  	</action>
+	  	<action name="addFruit" class="org.fruitmanage.action.AddFruitAction">
+	  		<result name="success">addFruit.jsp</result>
+	  	</action>
+	  	<action name="ViewFruitList" class="org.fruitmanage.action.ViewAllFruit">
+	  		<result name="success">viewAllFruit.jsp</result>
+	  	</action>
+	  	<action name="alterFruit" class="org.fruitmanage.action.AlterFruitAction">
+	  		<result type= "chain" name="success">ViewFruitList</result> 
+	  	</action>
+	  	<action name="deleteFruit" class="org.fruitmanage.action.DeleteFruitAction">
+	  		<result type= "chain" name="success">ViewFruitList</result> 
+	  	</action>
+	  	<action name="addFruitCount" class="org.fruitmanage.action.AddFruitCountAction">
+	  		<result type= "chain" name="success">ViewFruitList</result> 
+	  	</action>
+	  	<action name="ViewFruitListToC" class="org.fruitmanage.action.ViewAllFruitToCAction">
+	  		<result name="success">viewAllFruitToC.jsp</result>
+	  	</action>
+	  	<action name="transToFruitToC" class="org.fruitmanage.action.TransToFruitToC">
+	  		<result name="success">fruitToC.jsp</result>
+	  	</action>
+	  	<action name="loginUser" class="org.fruitmanage.action.LoginAction">
+	  		<result type="chain" name="success">ViewFruitListToC</result>
+	  		<result name="login">login.jsp</result>
+	  		<result name="loginToM">loginToM.jsp</result>
+	  		<result name="successToM">main.jsp</result>
+	  	</action>
+	  	<action name="logoutUser" class="org.fruitmanage.action.LogoutUserAction">
+	  		<result type="chain" name="success">ViewFruitListToC</result>
+	  	</action>
+	  	<action name="buyFruit" class="org.fruitmanage.action.BuyFruitAction">
+	  	    <result name="login">login.jsp</result>
+	  		<result name="success">buyFruitToC.jsp</result>
+	  	</action>
+	  	<action name="addShopcar" class="org.fruitmanage.action.AddShopcarAction">
+	  	    <result name="login">login.jsp</result>
+	  		<result type="chain" name="success">ViewFruitListToC</result>
+	  	</action>
+	  	<action name="viewShopcar" class="org.fruitmanage.action.ViewShopCarAction">
+	  	    <result name="login">login.jsp</result>
+	  		<result name="success">viewShopcarToC.jsp</result>
+	  	</action>
+	  	<action name="deleteShopcar" class="org.fruitmanage.action.DeleteShopcarAction">
+	  		<result type="chain" name="success">viewShopcar</result>
+	  	</action>
+	  	<action name="commitShopcar" class="org.fruitmanage.action.CommitShopcarAction">
+	  	    <result name="login">login.jsp</result>
+	  		<result type="chain" name="success">viewShopcar</result>
+	  	</action>
+	  	<action name="commitOrder" class="org.fruitmanage.action.CommitOrderAction">
+	  	    <result name="login">login.jsp</result>
+	  		<result type="chain" name="success">ViewFruitListToC</result>
+	  	</action>
+	  	<action name="viewOrder" class="org.fruitmanage.action.ViewOrderAction">
+	  	    <result name="loginToM">loginToM.jsp</result>
+	  	    <result name="login">login.jsp</result>
+	  	    <result name="viewAllOrder">viewAllOrder.jsp</result>
+	  		<result name="success">viewOrderToC.jsp</result>
+	  	</action>
+	  	<action name="waitCheck" class="org.fruitmanage.action.WaitCheckOrderAction">
+	  		<result name="success">waitCheckOrder.jsp</result>
+	  	</action>
+	  	<action name="commitWait" class="org.fruitmanage.action.CommitWaitAction">
+	  		<result type="chain" name="success">waitCheck</result>
+	  	</action>
+	  	<action name="waitDeliver" class="org.fruitmanage.action.WaitDeliverAction">
+	  		<result name="success">waitDeliverOrder.jsp</result>
+	  	</action>
+	  	<action name="commitDeliver" class="org.fruitmanage.action.CommitDeliverAction">
+	  		<result type="chain" name="success">waitDeliver</result>
+	  	</action>
+	  	<action name="deliverdOrder" class="org.fruitmanage.action.DeliverdOrderAction">
+	  		<result name="success">deliverdOrder.jsp</result>
+	  	</action>
+	  	<action name="checkNo" class="org.fruitmanage.action.CheckNoAction">
+	  		<result name="success">checkNo.jsp</result>
+	  	</action>
+	  	<action name="finishedOrder" class="org.fruitmanage.action.FinishedOrderAction">
+	  		<result name="success">finishedOrder.jsp</result>
+	  	</action>
+	  	<action name="commitFinishedOrder" class="org.fruitmanage.action.CommitFinishAction">
+	  		<result type="chain" name="success">deliverdOrder</result>
+	  	</action>
+    </package>
+    
+    <include file="test.xml"/>
+    <include file="struts-jfreechart.xml" />
+</struts>

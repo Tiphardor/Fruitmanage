@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Spring配置文件的根元素，并指定Schema信息 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+	<!-- 配置daoTemplate，作为所有DAO组件的模板 -->
+	<!-- 为DAO组件注入SessionFactory引用 -->
+	<bean id="daoTemplate" abstract="true"
+		p:sessionFactory-ref="sessionFactory"/>
+	<!-- 配置userDao组件 -->
+	<bean id="userDao" parent="daoTemplate"
+		class="org.fruitmanage.dao.impl.UserDaoImpl"/>
+	
+	<bean id="userService" class="org.fruitmanage.service.impl.UserServiceImpl">	
+		<property name="userDao" ref="userDao"/> 
+	</bean>	
+	
+	<bean id="fruitDao" parent="daoTemplate"
+	    class="org.fruitmanage.dao.impl.FruitDaoImpl"/>
+	<bean id="seasonDao" parent="daoTemplate"
+	    class="org.fruitmanage.dao.impl.SeasonDaoImpl"/>
+	<bean id="shopcarDao" parent="daoTemplate"
+	    class="org.fruitmanage.dao.impl.ShopcarDaoImpl"/>
+	<bean id="orderDao" parent="daoTemplate"
+	    class="org.fruitmanage.dao.impl.OrderDaoImpl"/>
+	<bean id="stateDao" parent="daoTemplate"
+	    class="org.fruitmanage.dao.impl.StateDaoImpl"/>
+	
+	<bean id="fruitService" class="org.fruitmanage.service.impl.FruitServiceImpl">
+	    <property name="fruitDao" ref="fruitDao" />
+	    <property name="seasonDao" ref="seasonDao" />
+	</bean>
+	<bean id="shopcarService" class="org.fruitmanage.service.impl.ShopcarServiceImpl">
+	    <property name="shopcarDao" ref="shopcarDao"/>
+	    <property name="fruitDao" ref="fruitDao" />
+	    <property name="seasonDao" ref="seasonDao" />
+	    <property name="userDao" ref="userDao" />
+	</bean>
+	<bean id="orderService" class="org.fruitmanage.service.impl.OrderServiceImpl">
+	    <property name="stateDao" ref="stateDao" />
+	    <property name="orderDao" ref="orderDao" />
+	    <property name="userDao" ref="userDao" />
+	</bean>
+	<bean id="seasonService" class="org.fruitmanage.service.impl.SeasonServiceImpl">
+	    <property name="seasonDao" ref="seasonDao" />
+	</bean>
+</beans>

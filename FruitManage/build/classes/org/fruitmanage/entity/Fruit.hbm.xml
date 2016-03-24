@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="org.fruitmanage.entity">
+  <class name="Fruit" table="fruit" >
+    <id name="id" column="id" type="java.lang.Integer">
+      <generator class="identity">
+      </generator>
+    </id>
+    <property name="fruitId" column="fruitId" type="java.lang.String"></property>
+    <property name="fruitName" column="fruitName" type="java.lang.String"></property>
+    <property name="fruitLongName" column="fruitLongName" type="java.lang.String"></property>
+    <property name="fruitDes" column="fruitDes" type="java.lang.String"></property>
+    <property name="fruitCount" column="fruitCount" type="java.lang.Integer"></property>
+    <property name="fruitPrice" column="fruitPrice" type="java.lang.Float"></property>
+    <property name="date" column="date" type="java.util.Date"></property>
+    <property name="calCount" column="calCount" type="java.lang.Integer"></property>
+    <property name="imageUrl" column="imageUrl" type="java.lang.String"></property>
+    <property name="seasonId" column="seasonId"></property>
+    <set name="shopcars" inverse="true">
+        <key>
+            <column name="fruitId" />
+        </key>
+        <one-to-many class="Shopcar" />
+    </set>
+    <set name="orders" inverse="true">
+        <key>
+            <column name="fruitId" />
+        </key>
+        <one-to-many class="Order" />
+    </set>
+  </class> 
+</hibernate-mapping>
